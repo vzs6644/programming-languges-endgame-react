@@ -1,0 +1,149 @@
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Hanken Grotesk, sans-serif;
+    
+    background-color: #1E1E1E;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #282726;
+  width: 594px;
+  height: 726px;
+
+  padding: 73px 57px;
+}
+
+h1{
+  /* font-weight: medium; */
+  margin-bottom: 0px;
+  font-size: 1.75rem;
+  color: #F9F4DA;
+}
+
+p{
+  color: #8E8E8E;
+  /* border: 1px red solid; */
+  max-width: 352px;
+  text-align: center;
+  margin: 4px;
+}
+
+#programmingblocksElm{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4.5px;
+  max-width: 280px;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+#css{
+  background-color: #328AF1;
+  color: #F9F4DA;
+
+}
+
+#ts{
+  background-color: #298EC6;
+  color: #F9F4DA;
+}
+#ruby{
+  background-color: #D02B2B;
+  color: #F9F4DA;
+}
+#assembly{
+  background-color: #2D519F;
+  color: #F9F4DA;
+}
+
+#python{
+  background-color: #FFD742;
+  color: #282726;
+}
+
+#js{
+  background-color: #F4EB13;
+  color: #1E1E1E;
+
+}
+#react{
+  background-color: #2ED3E9;
+  color: #1E1E1E;
+}
+
+#node{
+  background-color: #599137;
+  color: #F9F4DA;
+}
+#html{
+  background-color: #E2680F;
+  color: #F9F4DA;
+}
+
+.programmingLBlock{
+    padding: 4.5px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: bold;
+
+}
+
+#letterfillboxes{
+padding: 36px;
+display: flex;
+gap: 2px;
+
+}
+
+.fillanswerletterbox{
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  border-bottom: 1px solid #F9F4DA;
+  background-color: #323232;
+  align-items: center;
+  justify-content: center;
+  color: #F9F4DA;
+  font-weight: bold;
+}
+
+
+
+#optionsallLetterboxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: calc(10 * 40px + 9 * 6px); /* manually set  max width and used flex wrap * 10 buttons + 9 gaps */
+
+  margin-top: 40px;
+  /* border: 2px red solid; */
+}
+
+.letterElm{
+
+  width: 40px;
+  height: 40px;
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 4px;
+  background-color: #FCBA29;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+
+}
