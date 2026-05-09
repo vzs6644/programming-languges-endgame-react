@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export default function LetterOptions(props) {
 
 
@@ -26,7 +24,7 @@ export default function LetterOptions(props) {
 
     return (
 
-        <button style= {styles} className="letterElm"  onClick={letterClick}> {props.fillLetter}</button>
+        <button style= {styles} className="letterElm"  onClick={letterClick} disabled={props.guessedCorrect || props.guessedWrong}> {props.fillLetter}</button>
 
 
 
