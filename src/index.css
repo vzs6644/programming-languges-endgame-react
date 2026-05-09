@@ -51,36 +51,36 @@ p{
   margin-top: 90px;
 }
 
-#css{
+#CSS{
   background-color: #328AF1;
   color: #F9F4DA;
 
 }
 
-#ts{
+#Typescript{
   background-color: #298EC6;
   color: #F9F4DA;
 }
-#ruby{
+#Ruby{
   background-color: #D02B2B;
   color: #F9F4DA;
 }
-#assembly{
+#Assembly{
   background-color: #2D519F;
   color: #F9F4DA;
 }
 
-#python{
+#Python{
   background-color: #FFD742;
   color: #282726;
 }
 
-#js{
+#Javascript{
   background-color: #F4EB13;
   color: #1E1E1E;
 
 }
-#react{
+#React{
   background-color: #2ED3E9;
   color: #1E1E1E;
 }
@@ -89,7 +89,7 @@ p{
   background-color: #599137;
   color: #F9F4DA;
 }
-#html{
+#HMTL{
   background-color: #E2680F;
   color: #F9F4DA;
 }

@@ -2,6 +2,7 @@ import {words} from "./words.js"
 import LetterOptions from "./LetterOptions.jsx"
 import { nanoid } from "nanoid"
 import { useState } from "react";
+import  ProgrammingLanguages  from "./ProgrammingLanguages.jsx";
 
 import Fillanswerletterbox from "./Fillanswerletterbox.jsx"
 
@@ -16,9 +17,9 @@ function App() {
 
    const [chosenWord, setChosenWord] = useState(()=> getRandomWordArray())
 
-   const [letterGuessedArray, setLetterGuessedArray] = useState([])
+   const [letterGuessedCorrectArray, setLetterGuessedCorrectArray] = useState([])
 
-   const [ letterClickedArray, setLetterClickedArray ]   = useState([]) // letterClickedArray elements will be (letter, guessedCorrectlyOrNot)
+   const [ letterGuessedWrongArray, setLetterGuessedWrongArray ]   = useState([]) // letterClickedArray elements will be (letter, guessedCorrectlyOrNot)
 
    const [programmingLanguagesArray, setProgrammingLanguagesArray] = useState(["CSS", "HMTL", "Javascript",                                                                                                    
                                                                                                 "React",
@@ -27,6 +28,8 @@ function App() {
                                                                                                 "Python",
                                                                                                 "Ruby",
                                                                                                 "Assembly"])
+
+      const [wrongGuesses, setWrongGuesses] = useState(0)
 
    
 
@@ -44,11 +47,27 @@ function App() {
                 <Fillanswerletterbox
                   key={index}
                   fillletter={letter}
-                  letterGuessed = {letterGuessedArray.includes(letter)}
+                  letterGuessed = {letterGuessedCorrectArray.includes(letter)}// we will use to communicate if user 
+                  // guess corrrect using the letterGuessedCorrectArray
           
                 
                 />
   )
+
+
+  
+
+  
+ const programmingLblock = programmingLanguagesArray.map(language => {
+    
+    
+    return <ProgrammingLanguages
+            key={language}
+            language={language}
+            
+            
+              />
+})
 
 
 
@@ -56,34 +75,39 @@ function App() {
 
 
  const letteroptionsElements = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(letter => {
-    const clickedObj = letterClickedArray.find(el => el.letter === letter)
+    
     
     return <LetterOptions
-        key={letter}
-        fillLetter={letter}
-        letterGuessed={() => AlphabetGuessedCorrect(letter)}
-        isCorrect={clickedObj?.guessedCorrectlyOrNot === true}
-        isWrong={clickedObj?.guessedCorrectlyOrNot === false}
-    />
+            key={letter}
+            fillLetter={letter}
+            guessedCorrect = {letterGuessedCorrectArray.includes(letter)}
+            guessedWrong = {letterGuessedWrongArray.includes(letter)}
+            letterClickedCheckAnswer = {() => AlphabetGuessedCorrect(letter)}
+            
+            
+              />
 })
   
   function AlphabetGuessedCorrect(guessedLetter) {
-      // console.log("AlphabetGuessedCorrect function called when letter clicked")    
-      //we will check if the below letter that is guessed is there in the random word or not??
-      // console.log(guessedLetter)
+
+    console.log("we are inside the AlphabetGuessedCorrect function.")
+      
       const isGuessedCorrect =  chosenWord.includes(guessedLetter)
+      
+      // if the guessedLetter is there in chosen word add this to the  letterGuessedCorrectArray or else
+        // add this letter to the letterGuessedWrongArray
 
-      setLetterClickedArray( prevLetterClickedArray => [...prevLetterClickedArray, {letter : guessedLetter, guessedCorrectlyOrNot : isGuessedCorrect}])
-
-
-
-      if(chosenWord.includes(guessedLetter)){
-        // console.log("the user guessed correctly. we will show the letter in the answer fillbox.")
-        // console.log("this means we have to send a signal to Fillanswerletterbox component and change the letterGuessed state to true. but how to do that????? ")
-        setLetterGuessedArray(prevLetterGuessedArray => [...prevLetterGuessedArray, guessedLetter])
-        
-
+      if(isGuessedCorrect){
+        setLetterGuessedCorrectArray(prevarray => [...prevarray, guessedLetter])
       }
+      else{
+        setWrongGuesses(prevWrongGuesses => prevWrongGuesses + 1 )
+        setProgrammingLanguagesArray(prevarray => prevarray.slice(1))
+        setLetterGuessedWrongArray(prevarray=> [...prevarray, guessedLetter])
+      }
+
+      
+      
   }
   
 
@@ -94,15 +118,7 @@ function App() {
       <h1>Assembly: Endgame</h1>
       <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       <div id="programmingblocksElm">
-          <span className="programmingLBlock" id="css">CSS</span>
-          <span className="programmingLBlock" id="html">HMTL</span>
-          <span className="programmingLBlock" id="js">Javascript</span>
-          <span className="programmingLBlock" id="react">React</span>
-          <span className="programmingLBlock" id="ts">Typescript</span>
-          <span className="programmingLBlock" id="node">Node.js</span>
-          <span className="programmingLBlock" id="python">Python</span>
-          <span className="programmingLBlock" id="ruby">Ruby</span>
-          <span className="programmingLBlock" id="assembly">Assembly</span>
+          {programmingLblock}
 
       </div>
 
