@@ -106,6 +106,29 @@ h2{
 
 }
 
+.dead{
+  position: relative;
+}
+
+.dead::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  border-radius: inherit;
+}
+
+.dead::after{
+  content: "💀";
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
 #letterfillboxes{
 padding: 36px;
 display: flex;
@@ -168,7 +191,8 @@ background-color: #11B5E5;
 
 padding: 6px 12px;
 border-radius: 4px;
-border: none;
+border: 1px solid #D7D7D7;
+
 
 width: 220px;
 height: 40px;

@@ -30,6 +30,8 @@ function App() {
                                                                                                 "Ruby",
                                                                                                 "Assembly"])
 
+   const [deadProgrammingLang, setDeadProgrammingLang ] = useState([])                                                                                 
+
       const [wrongGuesses, setWrongGuesses] = useState(0)
 
       const [corrrectGuesses,setCorrrectGuesses] = useState(0)
@@ -73,6 +75,7 @@ function App() {
     return <ProgrammingLanguages
             key={language}
             language={language}
+            isDeadProgramLang= {deadProgrammingLang.includes(language)}
             
             
               />
@@ -92,6 +95,7 @@ function App() {
             guessedCorrect = {letterGuessedCorrectArray.includes(letter)}
             guessedWrong = {letterGuessedWrongArray.includes(letter)}
             letterClickedCheckAnswer = {() => AlphabetGuessedCorrect(letter)}
+            gameEnded = {gameLost || gameWon}
             
             
               />
@@ -134,6 +138,10 @@ function App() {
         setWrongGuesses(newWrongGuesses )
         // we were deleting the programming language from the array. it worked. but we will find a better option. we wil add something visual
         // setProgrammingLanguagesArray(prevarray => prevarray.slice(1))
+
+        const deadProgramlangNewAdded = programmingLanguagesArray[newWrongGuesses-1]
+
+        setDeadProgrammingLang(prevDeadProgLArray => [...prevDeadProgLArray, deadProgramlangNewAdded])
         setLetterGuessedWrongArray(prevarray=> [...prevarray, guessedLetter])
 
         console.log(newWrongGuesses)
@@ -225,6 +233,8 @@ function App() {
                                                                                                 "Python",
                                                                                                 "Ruby",
                                                                                                 "Assembly"])
+
+      setDeadProgrammingLang([])                                                                                                
 
                                                                                                 
 

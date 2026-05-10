@@ -1,10 +1,14 @@
 export default function ProgrammingLanguages(props){
 
+    const classnames = `programmingLBlock ${
+    props.isDeadProgramLang ? "dead" : ""
+}`
 
+    // const deadOrNot = props.isDeadProgramLang?`dead`:``
 
     return (
 
-        <span className="programmingLBlock disabled" id={props.language === "Node.js" ? "node" : props.language}> 
+        <span className = {classnames} id={props.language === "Node.js" ? "node" : props.language}> 
         
         {props.language}
         

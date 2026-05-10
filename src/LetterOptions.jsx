@@ -24,7 +24,7 @@ export default function LetterOptions(props) {
 
     return (
 
-        <button style= {styles} className="letterElm"  onClick={letterClick} disabled={props.guessedCorrect || props.guessedWrong}> {props.fillLetter}</button>
+        <button style= {styles} className="letterElm"  onClick={letterClick} disabled={props.guessedCorrect || props.guessedWrong || props.gameEnded}> {props.fillLetter}</button>
 
 
 
