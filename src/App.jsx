@@ -203,11 +203,58 @@ function App() {
 
                                   else{
 
+                                    var totalString = ""
+
+                                    // lets get the dead prog langs in a str format fromt he deadProgrammingLang state
+
+                                    if(deadProgrammingLang.length >2){// if 3 dead prog lang then 1 comma and 1 &
+
+                                    const firstPartStringCommas = deadProgrammingLang.slice(0,-1).join(", ")
+
+                                    const lastPartStringWithAnd = deadProgrammingLang[deadProgrammingLang.length-1]
+
+                                     totalString = "Farewell " + firstPartStringCommas + " & "+  lastPartStringWithAnd + " 🫡"
+
+                                    
+
+                                    }
+
+                                    else if(deadProgrammingLang.length>0){
+
+                                       totalString =  `Farewell ${deadProgrammingLang.join(" & ")} 🫡`
+                                    }
+                                    
+                                    if(totalString.length>1){
+
                                     return(
-                                      <div className="gameWonLostEl">
+                                      <div className="progLangDeadNotice">
+                                        {/* we will show the prog lang that are dead. like how it shows in the figma file */}
+                                        {/* eg- “Farewell HTML & CSS” 🫡  */}
+
+                                        <p>{totalString}</p>
+                                        
 
                                       </div>
                                     )
+
+                                  }
+
+                                  else {
+
+                                    return(
+                                        <div className="gameWonLostEl">
+                                        {/* we will show the prog lang that are dead. like how it shows in the figma file */}
+                                        {/* eg- “Farewell HTML & CSS” 🫡  */}
+
+                                        
+                                        
+
+                                      </div>
+                                      
+                                    )
+                                  }
+
+
                                   }
 
                 }
@@ -220,7 +267,7 @@ function App() {
       setCorrrectGuesses(0)
       setWrongGuesses(0)
       setGameLost(false)
-      setGameWon(0)
+      setGameWon(false)
 
       setLetterGuessedCorrectArray([])
 
